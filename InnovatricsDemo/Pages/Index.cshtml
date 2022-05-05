@@ -1,0 +1,20 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+</div>
+<h2>Configuration</h2>
+<p>Change change REST API URL Endpoint in configuration file appsettings.json</p>
+<h2>
+    Tasks:
+</h2>
+<ol>
+    <li>Register member to watch list <a class="nav-link text-dark" asp-area="" asp-page="/AddWatchList">Test</a></li>
+    <li>Search in watch list <a class="nav-link text-dark" asp-area="" asp-page="/AddMember">Test</a></li>
+</ol>
+<h2>Author</h2>
+<p>Application created by Michal Prílepok</p>

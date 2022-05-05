@@ -1,0 +1,145 @@
+﻿@page
+@model InnovatricsDemo.Pages.SearchModel
+@{
+    ViewData["Title"] = "Search in watch list";
+}
+@section scripts{
+<partial name="_ValidationScriptsPartial" />
+}
+
+<div class="text-center">
+    <h1>Search in watch list</h1>
+</div>
+<h2>Paramaters</h2>
+<h3>@ViewData["result"]</h3>
+
+<form class="form-group" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="Watchlist" class="col-sm-2 control-label">Watch list</label>
+        <div class="col-sm-10">
+            <select class="form-control" asp-items="Model.Options" d data-val="true" data-val-required="The watch list field is required." id="watchListId" name="watchListId"></select>
+            <span class="field-validation-valid" data-valmsg-for="watchListId" data-valmsg-replace="true">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Threshold" class="col-sm-2 control-label">Threshold</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" data-val="true" data-val-required="The threshold field is required." id="Threshold" name="Threshold" value="40">
+            <span class="field-validation-valid" data-valmsg-for="Threshold" data-valmsg-replace="true">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="MinFaceSize" class="col-sm-2 control-label">Min face size</label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control" data-val="true" data-val-required="The min face size field is required." id="MinFaceSize" name="MinFaceSize" value="35">
+            <span class="field-validation-valid" data-valmsg-for="MinFaceSize" data-valmsg-replace="true">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="MaxFaceSize" class="col-sm-2 control-label">Max face size</label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control" data-val="true" data-val-required="The max face size field is required." id="MaxFaceSize" name="MaxFaceSize" value="600">
+            <span class="field-validation-valid" data-valmsg-for="MaxFaceSize" data-valmsg-replace="true">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Photo" class="col-sm-2 control-label">Photo</label>
+        <div class="col-sm-10">
+            <input type="file" class="form-control" asp-for="Upload" data-val="true" data-val-required="The Photo field is required." id="Photo" name="Photo">
+            <span class="field-validation-valid" data-valmsg-for="Photo" data-valmsg-replace="true">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-outline-dark">Search</button>
+        </div>
+    </div>
+</form>
+
+<h2>Results</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Results[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Results[0].WatchListName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Results[0].Quality)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Results[0].LeftEyeX)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Results[0].LeftEyeY)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Results[0].RightEyeX)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Results[0].RightEyeY)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Results[0].Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Results[0].Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Results[0].FaceMaskConfidence)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Results[0].FaceMaskStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Results[0].NoseTipConfidence)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Results)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WatchListName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quality)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LeftEyeX)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LeftEyeY)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RightEyeX)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RightEyeY)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Age)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FaceMaskConfidence)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FaceMaskStatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NoseTipConfidence)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
